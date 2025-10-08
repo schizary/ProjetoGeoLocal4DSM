@@ -19,4 +19,5 @@ export default function useLocation() {
       });
     })();
   }, []);
+  return { coords, errorMsg };
 }
