@@ -1,69 +1,49 @@
 import React from "react";
-import { View, Text, StyleSheet, ActivityIndicator } from "react-native";
-import MapView, { Marker } from "react-native-maps";
-import useLocation from "../hooks/useLocation";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-export default function Main() {
-  const { coords, errorMsg } = useLocation();
+const MapsButton = () => {
+  const navigation = useNavigation();
 
-  if (errorMsg) {
-    return (
-      <View style={styles.center}>
-        <Text style={styles.errorText}> {errorMsg} </Text>
-      </View>
-    );
-  }
-
-  if (!coords) {
-    return (
-      <View style={styles.center}>
-        <ActivityIndicator size="large" color="#3498db" />
-        <Text style={styles.loadingText}>Carregando localização...</Text>
-      </View>
-    );
-  }
+  const handleMaps = () => {
+    navigation.navigate("Maps");
+  };
+  const handleGrafic = () => {
+    navigation.navigate("Graficos");
+  };
   return (
-    <MapView
-      style={styles.map}
-      initialRegion={{
-        latitude: coords.latitude,
-        longitude: coords.longitude,
-        latitudeDelta: 0.01,
-        longitudeDelta: 0.01,
-      }}
-      showsUserLocation={true}
-    >
-      <Marker
-        coordinate={
-            {
-                latitude: coords.latitude,
-                longitude: coords.longitude
-            }
-        }
-        title="Você está aqui"
-        description="Sua localização atual"
-      />
-    </MapView>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.button} onPress={handleMaps}>
+        <Text style={styles.buttonText}>Ir para o Mapa</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleGrafic}>
+        <Text style={styles.buttonText}>Ir para o Gráfico</Text>
+      </TouchableOpacity>
+    </View>
   );
-}
+};
+
+export default MapsButton;
 
 const styles = StyleSheet.create({
-  map: {
+  container: {
     flex: 1,
-  },
-  center: {
-    flex: 1,
-    justifyContent: "center",
     alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#fff",
   },
-  loadingText: {
-    marginTop: 10,
-    fontSize: 16,
-    textAlign: "center",
+  button: {
+    padding: 10,
+    backgroundColor: "#a021bfff",
+    borderRadius: 10,
+    width: "70%",
+    alignItems: "center",
+    marginBottom: 20,
   },
-  errorText: {
-    fontSize: 16,
-    color: "red",
+  buttonText: {
+    color: "#FFFFFF",
     textAlign: "center",
+    fontSize: 18,
+    fontWeight: "bold",
   },
 });
