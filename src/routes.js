@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Main from "./pages/Main";
 import Maps from "./pages/Maps";
-// import Graficos from "./pages/Graficos";
+import Graficos from "./pages/Graficos";
 
 const Stack = createStackNavigator();
 
@@ -14,7 +14,7 @@ export default function Routes() {
       <Stack.Navigator>
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen style={styles.container} name="Maps" component={Maps} />
-        {/* <Stack.Screen name="Graficos" component={Graficos} /> */}
+        <Stack.Screen name="Graficos" component={Graficos} />
       </Stack.Navigator>
     </NavigationContainer>
   );
