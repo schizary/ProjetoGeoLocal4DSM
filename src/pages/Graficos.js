@@ -4,7 +4,7 @@ import { PieChart } from "react-native-svg-charts";
 import { Text as TextSVG} from "react-native-svg";
 
 export default function Graficos() {
-  const data = [30,10,25,18,17];
+  const data = [10,10,25,18,17];
   const pieData = data.map((value, index) => ({
     value,
     key: `${index}-${value}`,
