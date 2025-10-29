@@ -11,6 +11,10 @@ const MapsButton = () => {
   const handleGrafic = () => {
     navigation.navigate("Graficos");
   };
+
+  const handleCamera = () => {
+    navigation.navigate("Camera");
+  }
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={handleMaps}>
@@ -18,6 +22,9 @@ const MapsButton = () => {
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleGrafic}>
         <Text style={styles.buttonText}>Ir para o Gráfico</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={handleCamera}>
+        <Text style={styles.buttonText}>Ir para a Câmera</Text>
       </TouchableOpacity>
     </View>
   );
