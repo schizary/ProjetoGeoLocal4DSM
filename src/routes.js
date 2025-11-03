@@ -5,6 +5,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Main from "./pages/Main";
 import Maps from "./pages/Maps";
 import Graficos from "./pages/Graficos";
+import CameraPage from "./pages/Camera";
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,7 @@ export default function Routes() {
         <Stack.Screen name="Main" component={Main} />
         <Stack.Screen style={styles.container} name="Maps" component={Maps} />
         <Stack.Screen name="Graficos" component={Graficos} />
+        <Stack.Screen name="Camera" component={CameraPage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
