@@ -1,5 +1,6 @@
-import * as Location from "expo-location";
-import { useEffect, useState } from "react";
+// src/hooks/useLocation.js
+import { useState, useEffect } from 'react';
+import * as Location from 'expo-location';
 
 export default function useLocation() {
   const [coords, setCoords] = useState(null);
@@ -8,16 +9,15 @@ export default function useLocation() {
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
-        setErrorMsg("Permissão negada para acesso a localização");
+      if (status !== 'granted') {
+        setErrorMsg('Permissão para acessar a localização foi negada');
         return;
       }
+
       let location = await Location.getCurrentPositionAsync({});
-      setCoords({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      });
+      setCoords(location.coords);
     })();
   }, []);
+
   return { coords, errorMsg };
 }

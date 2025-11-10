@@ -1,67 +1,30 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { PieChart } from "react-native-svg-charts";
-import { Text as TextSVG} from "react-native-svg";
 
 export default function Graficos() {
-  const data = [10,10,25,18,17];
-  const pieData = data.map((value, index) => ({
-    value,
-    key: `${index}-${value}`,
-    svg: {
-      fill: (('#' + (Math.random() * 0xFFFFFF << 0).toString(16) + '000000').slice(0, 7)),
-    },
-  }));
-
-  const Label = ({slices}) =>{
-    return slices.map((slice, index) => {
-        const { pieCentroid, data } = slice
-        return(
-            <TextSVG
-              key={index}
-              x={pieCentroid[0]}
-              y={pieCentroid[1]}
-              fill={"white"}
-              textAnchor={"middle"}
-              alignmentBaseline={"middle"}
-              fontSize={24}
-              stroke={'black'}
-              strokeWidth={0.2}
-            >
-              {data.value}%
-            </TextSVG>
-        )
-    })
-  }
-
   return (
     <View style={styles.container}>
-        <View>
-            <Text style={styles.textContainer}>Gráfico de Pizza</Text>
-        </View>
-        <View>
-            <PieChart style={{height: 400}} data={pieData}>
-                <Label/>
-            </PieChart>
-        </View>
+      <Text style={styles.text}>Tela de Gráficos</Text>
+      <Text style={styles.subText}>Gráficos serão exibidos aqui</Text>
     </View>
   );
-
-
-
-
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
     justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#fff",
   },
-  textContainer: {
-    fontSize: 30,
+  text: {
+    fontSize: 20,
     fontWeight: "bold",
-    color: "black",
+    marginBottom: 10,
+  },
+  subText: {
+    fontSize: 16,
+    color: "#666",
     textAlign: "center",
   },
 });
